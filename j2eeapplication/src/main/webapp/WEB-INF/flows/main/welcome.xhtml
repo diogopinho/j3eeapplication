@@ -21,7 +21,7 @@
 						<h:outputText style="color:red" value="*  "/>
 					</h:panelGroup>
 					<p:inputText id="userName" value="" required="true" label="User Name" title="Enter your User Name"/>
-					<p:toolTip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
+					<p:tooltip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
 					
 					<h:panelGroup>
 						<h:outputText value="Enter Password:"/>
@@ -29,8 +29,10 @@
 					</h:panelGroup>
 					<p:password id="pass" value="" required="true" label="Pasword" title="Enter a password"/>
 					<p:tooltip for="pass" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
-					<p:commandButton id="SubmitButton" action="" update="logPanelGrid,messages" icon="ui-icon-check" value="Sign In"/>
+					
 					<p:commandButton id="NewUserButton" action="newUser" update="logPanelGrid,messages" value="Sign Up"/>
+					<p:commandButton id="SubmitButton" action="signIn" update="logPanelGrid,messages" icon="ui-icon-check" value="Sign In"/>
+					
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>
