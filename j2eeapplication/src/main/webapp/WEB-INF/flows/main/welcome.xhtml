@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -12,10 +11,10 @@
 	<ui:define name="header"><h:outputText value="Please Sign In" /></ui:define>
 	<ui:define name="content">
 		<h:form id="loginForm">
-			<p:fieldset legend="Authentication Form">
+			<p:fieldset styleClass="fieldset" legend="Authentication Form">
 				<p:messages id="messages"/>
 			
-				<h:panelGrid id="logPanelGrid" style="margin-top: 25px; text-align: right" cellspacing="8" columns="3">
+				<h:panelGrid id="logPanelGrid" style="margin: 0 auto; margin-top: 25px; text-align: right" cellspacing="8" columns="3">
 					<h:panelGroup>
 						<h:outputText value="User name:"/>
 						<h:outputText style="color:red" value="*  "/>
@@ -30,7 +29,7 @@
 					<p:password id="pass" value="" required="true" label="Pasword" title="Enter a password"/>
 					<p:tooltip for="pass" styleClass="tooltip" showEvent="focus" hideEvent="blur"/>
 					
-					<p:commandButton id="NewUserButton" action="newUser" update="logPanelGrid,messages" value="Sign Up"/>
+					<p:commandButton id="NewUserButton" action="newUser" immediate="true" icon="ui-icon-plus" value="Sign Up"/>
 					<p:commandButton id="SubmitButton" action="signIn" update="logPanelGrid,messages" icon="ui-icon-check" value="Sign In"/>
 					
 				</h:panelGrid>
