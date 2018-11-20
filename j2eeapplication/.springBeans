@@ -10,6 +10,7 @@
 		<config>src/main/webapp/WEB-INF/applicationContext.xml</config>
 		<config>src/main/webapp/WEB-INF/datasource-config.xml</config>
 		<config>src/main/webapp/WEB-INF/webflow-config.xml</config>
+		<config>src/main/webapp/WEB-INF/security-config.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
@@ -22,6 +23,7 @@
 				<config>src/main/webapp/WEB-INF/applicationContext.xml</config>
 				<config>src/main/webapp/WEB-INF/datasource-config.xml</config>
 				<config>src/main/webapp/WEB-INF/webflow-config.xml</config>
+				<config>src/main/webapp/WEB-INF/security-config.xml</config>
 			</configs>
 			<profiles>
 			</profiles>
