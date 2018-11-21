@@ -3,6 +3,9 @@ package com.example.j2eeapp.services.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -33,7 +36,20 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	 * @return
 	 */
 	public boolean createUser(UserEntity userEntity) {
-		userDao.save(userEntity);
+		
+		if(!userDao.checkAvailable(userEntity.getUserName())) {
+			FacesMessage message = constructErrorMessage(String.format("User Name '%s' is not available", userEntity.getUserName()),null);
+			getFacesContext().addMessage(null, message);
+			return false;
+		}
+		try {
+			userDao.save(userEntity);
+		} catch(Exception e) {
+			FacesMessage message = constructFatalMessage(e.getMessage(), null);
+			getFacesContext().addMessage(null, message);
+			return false;
+		}
+		
 		return true;
 	}
 	
@@ -55,6 +71,21 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	}
 
 
+	protected FacesMessage constructErrorMessage(String message, String detail) {
+		return new FacesMessage(FacesMessage.SEVERITY_ERROR,message,detail);
+	}
+	
+	protected FacesMessage constructInfoMessage(String message, String detail) {
+		return new FacesMessage(FacesMessage.SEVERITY_INFO, message, detail);
+	}
+	
+	protected FacesMessage constructFatalMessage(String message, String detail) {
+		return new FacesMessage(FacesMessage.SEVERITY_FATAL, message, detail);
+	}
+	
+	protected FacesContext getFacesContext() {
+		return FacesContext.getCurrentInstance();
+	}
 
 	public UserDao getUserDao() {
 		return userDao;
