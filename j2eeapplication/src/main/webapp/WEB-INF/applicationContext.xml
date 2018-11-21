@@ -15,6 +15,8 @@
 		<property name="userDao" ref="userDao"/>
 	</bean>
 	
+	<bean id="userAuthenticationProviderService" class="com.example.j2eeapp.services.impl.UserAuthenticationProviderServiceImpl">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
 </beans>
-	
-	
+
